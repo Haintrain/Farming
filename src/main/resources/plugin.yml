@@ -1,0 +1,22 @@
+name: Farming
+main: io.github.haintrain.farming.MainFarming
+version: 0.0.1
+
+commands:
+  trample:
+    description: Toggles trampling of farmland
+    permission: trample.toggle
+
+permissions:
+  trample.*:
+    description: Gives access to all trample commands
+    children:
+      trample.toggle: true
+      trample.toggle.others: true
+  trample.toggle:
+    description: Allows player to toggle trampling
+    default: true
+  trample.toggle.others:
+    description: Allows player to toggle trampling of others
+    children:
+      trample.toggle: true
