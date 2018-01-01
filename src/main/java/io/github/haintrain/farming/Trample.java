@@ -30,7 +30,7 @@ public class Trample implements Listener{
     {
         Player player = event.getPlayer();
 
-        tramp = plugin.getConfig().getBoolean("User." + player.getName() + player.getUniqueId() + ".Trample_");
+        tramp = plugin.getConfig().getBoolean("User." + player.getName() + ".Trample_");
 
         if(event.getAction() == Action.PHYSICAL && event.getClickedBlock().getType() == Material.SOIL && tramp == false) {
             event.setCancelled(true);

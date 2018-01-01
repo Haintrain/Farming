@@ -25,11 +25,12 @@ public class TrampleToggle implements CommandExecutor {
 
             //Sets config file of player
             if(args.length == 1 && player.hasPermission("trample.toggle")){
-                plugin.getConfig().set("User." + player.getName() + player.getUniqueId() + ".Trample_", tramp);
+                plugin.getConfig().set("User." + player.getName() + ".Trample_", tramp);
             }
             else if(args.length == 2 && player.hasPermission("trample.toggle.others")){
                 if(plugin.getConfig().get("User." + args[1]) != null){
-                    plugin.getConfig().set("User." + args[1] + player.getUniqueId() + ".Trample_", tramp);
+                    plugin.getConfig().set("User." + args[1] + ".Trample_", tramp);
+                    player.sendMessage("NotNull");
                 }
             }
             else{
