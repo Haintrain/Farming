@@ -33,21 +33,22 @@ public class Hoes implements Listener{
 
             ItemStack item = player.getInventory().getItemInMainHand();
 
-            Integer enchantNum = item.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
-            //Do something with fortune enchant if hoes gonna get fortune
+            int enchantNum = item.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
+            int fortune = randomRange(0, enchantNum);
+            //Do something with fortune enchant if hoes gonna get fortune, yadadada fortune has rng calculations
 
 
             if (isFullyGrown(block)) {
                 if (item.getType() == Material.DIAMOND_HOE) {
-                    spawnItem(2, block, enchantNum);
+                    spawnItem(2 + fortune, block, enchantNum);
                     item.setDurability((short)(item.getDurability() + 1));
                     checkItem(item, player);
                 } else if (item.getType() == Material.IRON_HOE || item.getType() == Material.GOLD_HOE) {
-                    spawnItem(1, block, enchantNum);
+                    spawnItem(1 + fortune, block, enchantNum);
                     item.setDurability((short)(item.getDurability() + 1));
                     checkItem(item, player);
                 } else if (item.getType() == Material.WOOD_HOE || item.getType() == Material.STONE_HOE) {
-                    spawnItem(0, block, enchantNum);
+                    spawnItem(0 + fortune, block, enchantNum);
                     item.setDurability((short)(item.getDurability() + 1));
                     checkItem(item, player);
                 } else {
