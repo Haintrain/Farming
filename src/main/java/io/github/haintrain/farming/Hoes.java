@@ -71,6 +71,11 @@ public class Hoes implements Listener{
             Material mat = crop.getType();
 
             int random = randomRange(0, 100);
+            //Use this number and and if else statement to spawn in various materials
+
+            if (0 <= random && random <= 2){
+                crop.getWorld().dropItem(crop.getLocation(), new ItemStack(Material.DIAMOND_HOE));
+            }
 
             //Should I use a Case/Switch?
             if(mat == Material.CROPS){

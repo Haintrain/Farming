@@ -19,7 +19,7 @@ public class MainFarming extends JavaPlugin implements Listener{
         trample = new Trample(plugin);
 
         //Registers events of all the classes
-        registerEvents(this, new Hoes(plugin), trample, new PlayerJoin(plugin, trample));
+        registerEvents(this, new Hoes(plugin), trample, new PlayerJoin(plugin, trample), new PistonHoe(plugin), new WaterHoe(plugin));
         //Sets up the command
         getCommand("trample").setExecutor(new TrampleToggle(plugin));
 

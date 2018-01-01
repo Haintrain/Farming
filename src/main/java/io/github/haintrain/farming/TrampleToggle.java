@@ -1,5 +1,6 @@
 package io.github.haintrain.farming;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,18 +24,21 @@ public class TrampleToggle implements CommandExecutor {
         if (sender instanceof Player) {
             player = (Player) sender;
 
-            //Sets config file of player
-            if(args.length == 1 && player.hasPermission("trample.toggle")){
+
+            //Sets config file of player depending on number of args
+            if(args.length == 0){
+                player.sendMessage(plugin.getConfig().getString("User." + player.getName() + ".Trample_"));
+            }
+            else if(args.length == 1 && player.hasPermission("trample.toggle")){
                 plugin.getConfig().set("User." + player.getName() + ".Trample_", tramp);
             }
             else if(args.length == 2 && player.hasPermission("trample.toggle.others")){
                 if(plugin.getConfig().get("User." + args[1]) != null){
                     plugin.getConfig().set("User." + args[1] + ".Trample_", tramp);
-                    player.sendMessage("NotNull");
                 }
             }
             else{
-                player.sendMessage("Blah blah blah command");
+                player.sendMessage("Incorrect syntax. Please use /trample true||false (player)");
             }
 
             plugin.saveConfig();
@@ -44,7 +48,7 @@ public class TrampleToggle implements CommandExecutor {
 
 
         else{
-
+            Bukkit.getConsoleSender().sendMessage("I guess send from player idk");
         }
 
 

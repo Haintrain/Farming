@@ -35,8 +35,6 @@ public class Trample implements Listener{
         if(event.getAction() == Action.PHYSICAL && event.getClickedBlock().getType() == Material.SOIL && tramp == false) {
             event.setCancelled(true);
         }
-
-        player.sendMessage("Trample Is: " + tramp.toString());
     }
 
 
