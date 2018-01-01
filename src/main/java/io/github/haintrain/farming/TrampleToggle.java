@@ -19,17 +19,29 @@ public class TrampleToggle implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         tramp = Boolean.valueOf(args[0]);
 
+        //Checks to see if sender is player
         if (sender instanceof Player) {
             player = (Player) sender;
-            plugin.getConfig().set("User." + player.getUniqueId() + ".Trample_", tramp);
+
+            //Sets config file of player
+            if(args.length == 1 && player.hasPermission("trample.toggle")){
+                plugin.getConfig().set("User." + player.getName() + player.getUniqueId() + ".Trample_", tramp);
+            }
+            else if(args.length == 2 && player.hasPermission("trample.toggle.others")){
+                if(plugin.getConfig().get("User." + args[1]) != null){
+                    plugin.getConfig().set("User." + args[1] + player.getUniqueId() + ".Trample_", tramp);
+                }
+            }
+            else{
+                player.sendMessage("Blah blah blah command");
+            }
+
             plugin.saveConfig();
             player.sendMessage("Set Trample To : " + tramp);
         }
 
 
-        if(args.length == 1 && player.hasPermission("trample.toggle")){
 
-        }
         else{
 
         }

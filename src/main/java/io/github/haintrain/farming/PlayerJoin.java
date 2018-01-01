@@ -20,12 +20,12 @@ public class PlayerJoin implements Listener{
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-        tramp = plugin.getConfig().getBoolean("User." + player.getUniqueId() + ".Trample_");
+        tramp = plugin.getConfig().getBoolean("User." + player.getUniqueId() + player.getName() + ".Trample_");
 
         //Checks to see if player has already been assigned trample value and sets if there is none
         if(tramp.equals(null)) {
             player.sendMessage("Setting Tramp");
-            plugin.getConfig().set("User." + player.getUniqueId() + ".Trample_", true);
+            plugin.getConfig().set("User." + player.getName() + player.getUniqueId() + ".Trample_", true);
             plugin.saveConfig();
         }
 

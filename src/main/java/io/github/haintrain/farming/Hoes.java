@@ -66,7 +66,7 @@ public class Hoes implements Listener{
             }
         }
 
-        //Spawns block
+        //Spawns items, add RNG thing if needed
         public void spawnItem(int number, Block crop, int fortuneNum){
             Material mat = crop.getType();
 
